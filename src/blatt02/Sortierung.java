@@ -9,13 +9,14 @@ public class Sortierung {
 	public static void main(String[] RunArgs) {
 		// Kommandozeilenparameter auswerten
 		try {
-			for(int i = 1; i < 5; i++) {
-				RunArgs[0] = String.valueOf(i * 10); 
-				RunArgs[1] = "insert"; 
-				run(RunArgs);
-				RunArgs[1] = "merge";
-				run(RunArgs);
-			}
+//			for(int i = 1; i < 5; i++) {
+//				RunArgs[0] = String.valueOf(i * 1000); 
+//				RunArgs[1] = "insert"; 
+//				run(RunArgs);
+//				RunArgs[1] = "merge";
+//				run(RunArgs);
+//			}
+			run(RunArgs);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,11 +89,9 @@ public class Sortierung {
 		tStart = System.currentTimeMillis();
 		if(isMerge) {
 			// Sortierung mit MergeSort, bekannt aus der Vorlesung
-			System.out.println("mergesort");
 			mergeSort(feld);
 		} else {
 			// Sortierung mit InsertionSort, bekannt aus der Vorlesung
-			System.out.println("insort");
 			insertionSort(feld);
 		}
 		tEnd = System.currentTimeMillis();

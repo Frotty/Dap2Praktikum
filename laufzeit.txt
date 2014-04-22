@@ -1,0 +1,68 @@
+Feld ist sortiert!
+Benötigte Zeit Insert: 28ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 7ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 86ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 0ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 223ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 1ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 391ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 1ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 613ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 2ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 882ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 2ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 1210ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 2ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 1566ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 3ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 2001ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 3ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 2433ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 3ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 2943ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 3ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 3491ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 4ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 4076ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 4ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 4741ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 4ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 5429ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 5ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 6187ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 5ms
+Feld ist sortiert!
+Benötigte Zeit Insert: 6977ms
+Feld ist sortiert!
+Benötigte Zeit Merge: 6ms

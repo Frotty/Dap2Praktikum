@@ -9,14 +9,14 @@ public class Sortierung {
 	public static void main(String[] RunArgs) {
 		// Kommandozeilenparameter auswerten
 		try {
-//			for(int i = 1; i < 5; i++) {
-//				RunArgs[0] = String.valueOf(i * 1000); 
-//				RunArgs[1] = "insert"; 
-//				run(RunArgs);
-//				RunArgs[1] = "merge";
-//				run(RunArgs);
-//			}
-			run(RunArgs);
+			for(int i = 1; i < 18; i++) {
+				RunArgs[0] = String.valueOf(i * 10000); 
+				RunArgs[1] = "insert"; 
+				run(RunArgs);
+				RunArgs[1] = "merge";
+				run(RunArgs);
+			}
+//			run(RunArgs);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,6 +86,7 @@ public class Sortierung {
 			}
 		}
 		long tStart, tEnd, msecs;
+		tmp = new int[feldGroesse];
 		tStart = System.currentTimeMillis();
 		if(isMerge) {
 			// Sortierung mit MergeSort, bekannt aus der Vorlesung
@@ -177,8 +178,10 @@ public class Sortierung {
 		
 	}
 	
+	static int[] tmp;
+	
 	public static void merge(int[] array, int min, int middle, int max) { 
-		int[] tmp = new int[array.length];
+		
 		assert isSorted(array, min, middle) : "Linke Teilliste ist nicht sortiert";
 		assert isSorted(array, middle+1, max) : "Rechte Teilliste ist nicht sortiert";
 		// Alle Elemente in einen temporären Array kopieren

@@ -1,6 +1,15 @@
 package blatt03;
 
-class Bubblesort {
+public class BubbleSort {
+	
+	public static void main (String[] args) {
+		try {
+			run(args);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void bubbleSort (int[] array) {
 		int n = array.length-1;
 		for (int i = 0; i<=n; i++) {
@@ -18,64 +27,69 @@ class Bubblesort {
 			array[i] = array.length-i;
 		}
 	}
-	public static void main (String[] args) {		
-		boolean pruefung = false;	//Fehlerkontrolle, wird bei 1.) auf true gesetzt, wenn Programm ausgeführt werden kann
-		float vgl = 0;		
+	public static void run (String[] args) {		
+		float paramTime = 0;		
 		try {
 			if (args.length > 0) {
-				vgl = (Float.parseFloat(args[0]))*1000;
-				pruefung = true;	// 1.)
-				if (vgl<0) {
-					System.out.println("Negative Werte sind nicht zulässig. Programm wird mit positivem Wert ausgeführt...");
-					vgl = vgl *(-1); //Negative Variable für Ausführung anpassen
+				paramTime = (Float.parseFloat(args[0]))*1000;
+				if (paramTime<0) {
+					System.err.println("Negative Werte sind nicht zulässig.");
+					throw new IllegalArgumentException();
 				}
 				if (args.length > 1) {
-					System.out.println("Nur ein Wert wird benötigt. Programm ignoriert weitere Parameter...");
+					System.err.println("Es ist nur ein Kommandozeilenparameter erlaubt!");
+					throw new IllegalArgumentException();
 				}
 			}
 			else {
-				System.out.println("Parameter benötigt!");
+				System.err.println("Es wird mindestens ein Parameter benötigt!");
+				throw new IllegalArgumentException();
 			}
 		}	
 		catch (NumberFormatException e) {
-			System.out.println("Eingabe vom Typ 'float' benötigt");
-		}	 
-		if (pruefung) {
-			int[] feld = new int[1000];
-			fill(feld);
-			//print(feld);
-			long tStart = System.currentTimeMillis();	//Zeitmessung
-			bubbleSort(feld);
-			long tEnd = System.currentTimeMillis();
-			long time = tEnd-tStart;
-			//System.out.println();		
-			//System.out.println("Laufzeit: "+time+" ms");			
-			float timeDif = vgl-time;	//Differenz der eingegebenen Zeit und der Ausführungszeit
-			while (timeDif > 100) {		//wird ausgeführt, solange Bubblesort schneller als die Vorgabe arbeitet
-				int feldL = feld.length;				
-				feld = new int[feldL*2];
-				fill(feld);
-				tStart = System.currentTimeMillis();
-				bubbleSort(feld);
-				tEnd = System.currentTimeMillis();
-				time = tEnd-tStart;
-				timeDif = vgl-time;
-				System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);
-		
-			}	
+			System.err.println("Eingabe vom Typ 'float' benötigt");
+			e.printStackTrace();
 		}
-	}
-	public static void print(int[] array) { //für Aufgabenstellung unwichtig
-		System.out.println();		
-		int formatCounter = 0;		
-		for(int i = 0; i<array.length; i++) {
-			System.out.print(array[i] +", ");
-			formatCounter++;
-			if (formatCounter > 10) {
-				System.out.println();
-				formatCounter = 0;
+		// Parameter validiert
+		
+		int[] feld = new int[500];
+	
+		
+		long tStart = 0, tEnd = 0, time = 0, diff = 0;
+		do {
+			feld = new int[feld.length*2];
+			fill(feld);
+			tStart = System.currentTimeMillis();
+			bubbleSort(feld);
+			tEnd = System.currentTimeMillis();
+			time = tEnd-tStart;
+			System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);
+	
+		} while (time < paramTime);
+		
+		int min = feld.length / 2;
+		int max = feld.length;
+		
+		while (max >= min) {
+			// calculate the midpoint for roughly equal partition
+			int mid = (min+max)/2;
+			feld = new int[mid];
+			fill(feld);
+			tStart = System.currentTimeMillis();
+			bubbleSort(feld);
+			tEnd = System.currentTimeMillis();
+			time = tEnd-tStart;
+			System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);
+			diff = (long) Math.abs(time-paramTime);
+			if(diff <= 100) {
+				break;
+			} else if (time < paramTime) {
+				min = mid;
+			} else {
+				max = mid;
 			}
 		}
-		System.out.println();
+		System.out.println("Gefundene Feldgröße: " + feld.length + " mit der Laufzeit: " + time + "ms im Vergleich zur angegebenen Laufzeit von " + paramTime + "ms");
 	}
+
 }

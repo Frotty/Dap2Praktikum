@@ -30,6 +30,29 @@ public class BubbleSort {
 			array[i] = array.length-i;
 		}
 	}
+	
+	public static boolean isSorted(int[] array) {
+		if( array == null ) {
+			System.err.println("Parameter array ist null");
+			throw new IllegalArgumentException();
+		}
+		if ( array.length < 1 ) {
+			System.err.println("Parameter array enthält keine Elemente");
+			throw new IllegalArgumentException();
+		}
+		// Eine Folge mit nur einem Element ist per Definition sortiert
+		if(array.length == 1) return true;
+		// Durch das Feld iterieren
+		for(int i = 0; i < array.length-1; i++) {
+			// Ist der Wert mit dem index i+1 kleiner als der Wert mit dem index i
+			// ist die Liste nicht aufsteigend sortiert
+			if(array[i] > array[i+1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public static void run (String[] args) {		
 		float paramTime = 0;		
 		if (args.length == 1) {
@@ -55,6 +78,7 @@ public class BubbleSort {
 			fill(feld);
 			tStart = System.currentTimeMillis();
 			bubbleSort(feld);
+			assert isSorted(feld) : "Array nicht sortiert";
 			tEnd = System.currentTimeMillis();
 			time = tEnd-tStart;
 			System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);
@@ -73,6 +97,7 @@ public class BubbleSort {
 			fill(feld);
 			tStart = System.currentTimeMillis();
 			bubbleSort(feld);
+			assert isSorted(feld) : "Array nicht sortiert";
 			tEnd = System.currentTimeMillis();
 			time = tEnd-tStart;
 			System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);

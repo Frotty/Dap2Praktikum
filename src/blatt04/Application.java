@@ -15,13 +15,14 @@ public class Application {
 	
 	public static void run(String[] args) {
 		Point[] points = new Point[3];
+		// Entweder kein Parameter
 		if(args.length == 0) {
 			Random rndGen = new Random();
 			for(int i = 0; i < 6; i+=2) {
 				points[i/2] = new Point(2, rndGen.nextInt(2000) -1000, rndGen.nextInt(2000) -1000);
 			}
 			
-			
+		// Oder 6 Parameter
 		} else if (args.length == 6) {
 			try {
 				for(int i = 0; i < 6; i+=2) {
@@ -38,6 +39,6 @@ public class Application {
 		
 		Triangle t = new Triangle(points);
 		assert t.validate() : "Triangle t ist kein gültiges Dreieck";
-		System.out.println("Umfange des Dreiecks: " + t.perimeter());
+		System.out.println("Umfang des Dreiecks: " + t.perimeter());
 	}
 }

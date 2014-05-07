@@ -9,6 +9,7 @@ public class Point
     
     public Point(int dimension, int... values){
     	this.dimension = dimension;
+    	// Anzahl der Werte muss gleich der Dimension sein
     	if(values.length != dimension) {
     		throw new IllegalArgumentException("Invalid amount of parameters");
     	}
@@ -21,7 +22,7 @@ public class Point
     }
         
     public int get(int index){
-    	if(index < dimension) {
+    	if(index < dimension && index >= 0) {
     		return values[index];
     	}else {
     		throw new IndexOutOfBoundsException("index: " + index + "is out of Dimension-Bounds: " + dimension);

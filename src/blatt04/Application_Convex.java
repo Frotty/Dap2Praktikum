@@ -20,6 +20,7 @@ public class Application_Convex {
 		}
 		Point[] points = new Point[1000];
 		Random rndGen = new Random();
+		// Zufälige Punkte erstellen
 		for(int i = 0; i < points.length; i++) {
 			points[i] = new Point(2, rndGen.nextInt(2000) -1000, rndGen.nextInt(2000) -1000);
 		}

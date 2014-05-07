@@ -78,7 +78,7 @@ public class BubbleSort {
 			System.out.println("Laufzeit: "+time+" ms, Feldgroesse: "+feld.length);
 			// Differenz zwischen gebrauchter Zeit und angegebener Zeit
 			diff = (long) Math.abs(time-paramTime);
-			if(diff <= 100) {
+			if(diff <= 1) {
 				// Ist die Differenz geringer als 100ms wird die Suche (erfolgreich) beendet
 				break;
 			} else if (time < paramTime) {

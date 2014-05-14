@@ -48,6 +48,7 @@ public class Sortierung {
 		tEnd = System.currentTimeMillis();
 		msecs = tEnd - tStart;
 		System.out.println("Benötigte Zeit Quicksort: " + msecs + "ms");
+		// Ist das Feld von Quicksort sortiert worden?
 		if(isSorted(feldq)) {
 			System.out.println("Feld sortiert!");
 		} else {
@@ -69,12 +70,15 @@ public class Sortierung {
 		
 	}
 	
+	// Aus der Aufgabenstellung gegeben
 	public static void quickSort(int[] A, int l, int r) {
 		if( l < r ) {
 			int i = l;
 			int j = r;
+			// Bestimmung des Pivot-Elements
 			int pivot = A[(l+r)/2];
 			while( i <= j ){
+				
 				while(A[i] < pivot) {
 					i++;
 				}
@@ -82,6 +86,7 @@ public class Sortierung {
 					j--;
 				}
 				if (i<=j) {
+					// Vertauschen der Elemente
 					int tmp = A[i];
 					A[i] = A[j];
 					A[j] = tmp;
@@ -89,9 +94,21 @@ public class Sortierung {
 					j--;
 				}
 			}
+			assert checkElelements(A, l, pivot, r) : "Elemente nicht auf der richtigen Seite vom Pivot";
 			quickSort(A, l, j);
 			quickSort(A, i, r);
 		}
+	}
+	
+	public static boolean checkElelements(int[] A, int l, int pivot, int r) {
+		for(int i2 = l; i2 <= r; i2++) {
+			if(i2 < (l+r)/2 && !(A[i2] < pivot)) {
+				return false;
+			}else if (!(A[i2] >= pivot)) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public static void quickSort(int[] feld) {

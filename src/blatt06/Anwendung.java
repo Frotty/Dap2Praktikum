@@ -18,7 +18,7 @@ public class Anwendung {
 		// Scanner erstellen und gucken ob die Datei existiert
 		try {
 			sc = new Scanner(f);
-			sc.useDelimiter(" |\\n|,");
+			sc.useDelimiter(" |\\n|=");
 		} catch (FileNotFoundException e) {
 			System.err.println("Datei konnte nicht gefunden werden");
 			e.printStackTrace();
@@ -59,34 +59,26 @@ public class Anwendung {
 			sb.append("]");
 			System.out.println(sb.toString());
 		}else if(args[0].equals("Lateness")) {
-			ArrayList<Job> jobs = new ArrayList<>();
+			ArrayList<String> jobs = new ArrayList<>();
 			while(sc.hasNext()) {
-				jobs.add(new Job(sc.nextInt(), sc.nextInt()));
+				if(sc.next().equals("integer"))
+					jobs.add(sc.next());
 			}
 			StringBuilder sb = new StringBuilder();
 			// Ausgabe der eingelesenen intervalle
-			sb.append("Eingelesene Intervalle:\n[ ");
-			for( Job i : jobs ){
-				sb.append(i.toString() + ", ");
+			sb.append("init:\n");
+			int count = 0;
+			for( String i : jobs ){
+				sb.append("\torderStrings[" +count + "] = \"" + i + "\"\n");
+				count++;
 			}
-			sb.deleteCharAt(sb.length()-2);
-			sb.append("]");
 			System.out.println(sb.toString());
 			// Sortiere die ArrayListe
 			Collections.sort(jobs);
 			sb = new StringBuilder();
 			sb.append("Sortiert:\n[ ");
-			for( Job i : jobs ){
-				sb.append(i.toString() + ", ");
-			}
-			sb.deleteCharAt(sb.length()-2);
-			sb.append("]");
-			System.out.println(sb.toString());
-			// Schedulieren
-			int[] svals = latenessScheduling(jobs);
 			sb = new StringBuilder();
 			sb.append("Latenessscheduling:\n");
-			sb.append(Arrays.toString(svals));
 			System.out.println(sb.toString());
 		}else {
 			throw new IllegalArgumentException("Der erste parameter kann nur \"Interval\" oder \"Lateness\" sein.");
